@@ -49,22 +49,22 @@ public class Docente {
     
     public double bonificacion(){
         if(categoria.equals("Principal")&& estudios.equals("Doctorado"))
-            return pagParcial()*0.20;
+            return (pagParcial()*0.20);
         if(categoria.equals("Principal")&& estudios.equals("Maestria"))
-            return pagParcial()*0.17;
+            return (pagParcial()*0.17);
         if(categoria.equals("Asociado")&& estudios.equals("Doctorado"))
-            return pagParcial()*0.15;
+            return (pagParcial()*0.15);
         if(categoria.equals("Asociado")&& estudios.equals("Maestria"))
-            return pagParcial()*0.10;
+            return (pagParcial()*0.10);
         if(categoria.equals("Auxiliar")&& estudios.equals("Doctorado"))
-            return pagParcial()*0.12;
+            return (pagParcial()*0.12);
         if(categoria.equals("Auxiliar")&& estudios.equals("Maestria"))
-            return pagParcial()*0.08;
+            return (pagParcial()*0.08);
         return 0;
     }
     
     public double descuento(){
-        return pagParcial()*PORSEG;
+        return (pagParcial()*PORSEG);
     }
     
     public double sueldoFinal(){
@@ -72,15 +72,18 @@ public class Docente {
     }
     
     public String mostrarDatos(){
-        return "\n*************** DOCENTE " + contador + " ***************" +
-               "\n Codigo               : " + codigo+
-               "\n Nombre               : " + nombre+
-               "\n Categoria            : " + categoria+
-               "\n Estudios Postgrado   : " + estudios+
-               "\n Horas Clase          : " + horas+
-               "\n Pago Parcial         : " + pagParcial()+
-               "\nBonificación          : " + bonificacion()+
-               "\n Descuento            : " + descuento()+
-               "\n Sueldo final         : " + sueldoFinal();
+        
+        DecimalFormat df = new DecimalFormat("#.##");
+        String texto = "\n Codigo: " + codigo+
+               " || Nombre: " + nombre+
+               " || Categoria: " + categoria+
+               " || Estudios Postgrado: " + estudios+
+               " || Horas Clase: " + horas+
+               " || Pago Parcial: S/." + df.format(pagParcial())+
+               " || Bonificación: S/." + df.format(bonificacion())+
+               " || Descuento: S/." + df.format(descuento())+
+               " || Sueldo final: S/." + df.format(sueldoFinal());
+        
+        return texto;
     }
 }
